@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Button, ContainerFirst, H1, Input } from '../../BasicStyles/BasicStyles'
 import { BoxGasto } from '../GastoStyles'
-import { createNewSpend } from "../../../API/SpendBackEnd";
+//import { createNewSpend } from "../../../API/SpendBackEnd";
 
 const AltaGasto = () => {
     const [date, setDate] = useState("");
@@ -13,9 +13,9 @@ const AltaGasto = () => {
     const handleOnChangeAmount = (e) => {setAmount(e.target.value)}
 
     const handleNewSpend = async() => {
-        //primero sin validar para recuperar respuiesta de BackEnd.
+       /* //primero sin validar para recuperar respuiesta de BackEnd.
         const response = await createNewSpend(date,category,amount);
-        console.log(response);
+        console.log(response);*/
 
     }
 

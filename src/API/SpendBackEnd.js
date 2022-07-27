@@ -1,4 +1,4 @@
-import axios from 'axios';
+/*import axios from 'axios';
 
 const baseURL = 'https://myspends-api.herokuapp.com/api';
 
@@ -13,6 +13,4 @@ export const createNewSpend = async(date,category,amount) => {
 
 }  
 
-module.exports = {
-    createNewSpend
-}
+module.exports = { createNewSpend }*/
