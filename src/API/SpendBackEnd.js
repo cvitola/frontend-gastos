@@ -12,3 +12,8 @@ export const createNewSpend = async(date,category,amount) => {
 
 }  
 
+export const createNewUser = async(data) => {
+        const response = await axios.post(`${baseURL}/auth/register` , {data});
+        return response;
+}
+

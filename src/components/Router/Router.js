@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import Home from "../../pages/Home/Home"
 import Login from "../../components/Login/Login"
 import AltaGasto from "../Gasto/AltaGasto/AltaGasto"
+import Register from "../Register/Register"
 
 const Router = () => {
     return (
@@ -12,6 +13,7 @@ const Router = () => {
                 <Route path='/home' element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/carga" element={<AltaGasto />} />
+                <Route path="/register" element={<Register />} />
                 <Route path='*' element={<Home />} />
             </Routes>
 

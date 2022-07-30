@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Button, ContainerFirst, H1, Input } from '../../BasicStyles/BasicStyles'
 import { BoxGasto } from '../GastoStyles'
 import  { createNewSpend }  from "../../../API/SpendBackEnd";
+import styled from 'styled-components';
 
 const AltaGasto = () => {
     const [date, setDate] = useState("");
@@ -42,10 +43,13 @@ const AltaGasto = () => {
             <Input type="text" placeholder='Monto...' value={amount} onChange={handleOnChangeAmount}/>
             <Button onClick={handleNewSpend}>Enviar</Button>
             <Button onClick={handleClearFields}warning={true}>Cancelar</Button>
-            <p>Hola: {message}</p>
+            <Info>{message}</Info>
         </BoxGasto>
     </ContainerFirst>
   )
 }
 
 export default AltaGasto
+
+export const Info = styled.p`
+  color: red`;
