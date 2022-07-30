@@ -18,12 +18,11 @@ const AltaGasto = () => {
       //primero sin validar para recuperar respuiesta de BackEnd.
       try{
         const response = await createNewSpend(date,category,amount);
-        if (!response.ok) {
+        if (!response.status === 200) {
           throw new Error("No se pudo procesar la respuesta");
         }  
-        return response;    
+        setMessage("Gasto cargado")    
       } catch(error){
-          console.log(error.response)
           setMessage(error.response.data)
       }
 

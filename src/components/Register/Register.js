@@ -7,8 +7,8 @@ import { createNewUser } from '../../API/SpendBackEnd';
 
 const Register = () => {
     const [name, setName]  = useState("");
-    const [surName, setSurName]  = useState("");
-    const [mail, setMail]  = useState("");
+    const [surname, setSurName]  = useState("");
+    const [email, setMail]  = useState("");
     const [password, setPassword]  = useState("");
     const [message, setMessage] = useState("");
 
@@ -22,16 +22,16 @@ const Register = () => {
     }
     const handleOnClickRegister = async() => {
         try{
-            if(validaContenido(name) && validaContenido(surName) && validaContenido(mail) && validaContenido(password)){
+            if(validaContenido(name) && validaContenido(surname) && validaContenido(email) && validaContenido(password)){
                 const register = {
                     name: name,
-                    surName: surName,
-                    mail: mail,
+                    surname: surname,
+                    email: email,
                     password: password
                 }
                 console.log(register)
                 const response = await createNewUser(register);
-                if(!response.ok){
+                if(!response.status === "200"){
                     throw new Error("No se pudo procesar la respuesta");
                 }
                 return response;
@@ -51,9 +51,9 @@ const Register = () => {
             <H1>Registrate</H1>
             <NameAndSurName>
                 <Input type="text" placeholder="Cosme..." value={name} onChange={handleOnChangeName} />
-                <Input type="text" placeholder="Fulanito..." value={surName} onChange={handleOnChangeSurName} />
+                <Input type="text" placeholder="Fulanito..." value={surname} onChange={handleOnChangeSurName} />
             </NameAndSurName>
-            <Input type="mail" placeholder="cosmefulanito@mail.com" value={mail} onChange={handleOnChangeMail} />
+            <Input type="mail" placeholder="cosmefulanito@mail.com" value={email} onChange={handleOnChangeMail} />
             <Input type="password" placeholder="password" value={password} onChange={handleOnChangePassword} />
             <Button onClick={handleOnClickRegister}>Enviar</Button>
             <Info>{message}</Info>

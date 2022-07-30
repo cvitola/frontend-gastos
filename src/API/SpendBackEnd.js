@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const baseURL = 'https://myspends-api.herokuapp.com/api';
+const baseURL = 'https://myspends-api.herokuapp.com/api'; 
+//const baseURL = 'http://localhost:3001/api';
 
 export const createNewSpend = async(date,category,amount) => {
         const response = await axios.post(`${baseURL}/spends`, {
@@ -13,7 +14,7 @@ export const createNewSpend = async(date,category,amount) => {
 }  
 
 export const createNewUser = async(data) => {
-        const response = await axios.post(`${baseURL}/auth/register` , {data});
+        const response = await axios.post(`${baseURL}/auth/register` , data);
         return response;
 }
 
