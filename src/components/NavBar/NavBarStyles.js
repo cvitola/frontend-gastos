@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const User = styled.p`
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 300;
+    `;
+    
 export const ImgLogo = styled.img`
     width: 100px;
     padding: 5px;

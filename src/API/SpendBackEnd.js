@@ -18,3 +18,7 @@ export const createNewUser = async(data) => {
         return response;
 }
 
+export const loginUser = async(data) => {
+        const response = await axios.post(`${baseURL}/auth/login` , data);
+        return response;
+}
