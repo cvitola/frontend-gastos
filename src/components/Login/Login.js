@@ -37,6 +37,7 @@ const Login = () => {
            let decode = jwt_decode(valueData.accessToken);
            valueData.firstName = decode.firstName;
            valueData.email = decode.email;
+           valueData.id = decode.id;
            console.log(valueData)
            navigate('../carga')
         } 
