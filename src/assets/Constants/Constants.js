@@ -3,3 +3,7 @@ export const colorsTheme = {
     base2 : "#4CAF50",
     warning: "#f44336"
 }
+
+export const meses = [
+    "Seleccion","Enero","Febrero","Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+];

@@ -1,41 +1,34 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ItemList from './ItemList';
+import  InputSelect  from "./InputSelect"
+import { ImFilter } from "react-icons/im";
+import { meses } from "../../assets/Constants/Constants";
 
-
-const ListSpend = ({listita}) => {
+const ListSpend = ({spendByUser}) => {
     const [sum,setSum] = useState(0)
-    
-    /*const listita=[
-        {
-            date: "Fecha Gasto",
-            category: "Categoria",
-            amount: "0"
-        },
-        {
-            date: "2022-05-17",
-            category:"Electro",
-            amount: "6598"
-        },
-        {
-            date: "2022-06-17",
-            category:"Supermercado",
-            amount: "2385"
-        }
-        
-    ]*/
-
+    console.log(spendByUser)
     const sumatoria = () =>{
-        return listita.reduce((acumulador, actual) => acumulador + parseInt(actual.amount), 0);
+        return spendByUser.reduce((acumulador, actual) => acumulador + parseInt(actual.amount), 0);
     }
-
+    useEffect( () => {
+        setSum(sumatoria());
+    },[])
   return (
     <Container>
         <H1>Lista de gastos</H1>
-        {
-            listita.map((data, index) => <ItemList key={index} data={data} />) 
+        <Tool>
+            <div>
+                <ImFilter />
+                <InputSelect props={meses} /> 
+            </div>
+
+            <Sum>GASTOS TOTAL: $ {sum}</Sum>
+        </Tool>
+        { 
+            spendByUser?.map((data) => <ItemList key={data._id} data={data} />) 
         }
-        <Sum>{() => sumatoria()}</Sum> 
+         
     </Container>
     
   )
@@ -44,13 +37,12 @@ const ListSpend = ({listita}) => {
 export default ListSpend
 
 export const Container = styled.div`
-        width: 100%;
-    padding-top:35px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    background-color: #0A0A0A;
+    background-color: #EFFCFF;
     `;
 
 export const H1 = styled.h1`
@@ -61,4 +53,21 @@ export const Sum = styled.p`
     padding: 10px;
     background: #FAFAFA;
     color: red;
+    `;
+
+export const Tool = styled.div`
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: CEnter;
+    background: #FAFAFA;
+    gap: 10px;
+    @media screen and (max-width: 563px){
+      flex-direction: column;
+      width: auto;
+      border: 2px solid grey;
+    }
+    `;
+
+export const Input = styled.input`
     `;

@@ -25,14 +25,17 @@ export const loginUser = async(data) => {
 }
 
 export const getSpendsByUser = async(userID) => {
-
-        const response = await axios.get(`${baseURL}/spends/byuser`, {
-                userID: userID
-        });
+        const response = await axios.get(`${baseURL}/spends/byuser/${userID}`);
         return response;
 }
 
 export const getAllSpends = async() => {
         const response = await axios.get(`${baseURL}/spends`);
+        return response;
+}
+
+export const deleteSpend = async(id) => {
+        
+        const response = await axios.delete(`${baseURL}/spends/${id}`);
         return response;
 }

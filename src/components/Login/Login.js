@@ -54,19 +54,17 @@ const Login = () => {
 
   
   return (
-    <ContainerFirst>
-      <Container>
-      <H1>Bienvenido</H1>
-      <H2>LOGIN</H2>
-        <BoxLogin>
-          <Input type="mail" placeholder="cosmefulanito@mail.com" value={email} onChange={handleOnChangeMail} />
-          <Input type="password" placeholder="password" value={password} onChange={handleOnChangePassword} />
-          <Button onClick={handleOnClickLogin}>ENVIAR</Button>
-          <Info>{message}</Info>
-          <P>No tenés cuenta?. <GoTo onClick={handleOnClickGoTo}>REGISTRATE</GoTo></P>        
-        </BoxLogin>
-        </Container>
-    </ContainerFirst>
+    <Container>
+      <h1>Inciar sesión</h1>
+      <p>poner iconito</p>
+      <BoxLogin>
+        <Input type="mail" placeholder="cosmefulanito@mail.com" value={email} onChange={handleOnChangeMail} />
+        <Input type="password" placeholder="password" value={password} onChange={handleOnChangePassword} />
+        <Button onClick={handleOnClickLogin}>ENVIAR</Button>
+        <Info>{message}</Info>
+        <P>No tenés cuenta? <GoTo onClick={handleOnClickGoTo}>REGISTRATE</GoTo></P>   
+      </BoxLogin>
+    </Container>
     
   )
 }
@@ -88,7 +86,7 @@ export const GoTo = styled.a`
     cursor: pointer;
     `
 export const Container = styled.div`
-    max-width: 500px;
+    width: 100%;
     padding-top:35px;
     display: flex;
     flex-direction: column;

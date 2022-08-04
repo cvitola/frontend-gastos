@@ -19,6 +19,7 @@ export const Input = styled.input`
     padding: 10px;
     margin: 10px;
     border: none;
+    width: 200px;
     box-shadow: 1px 1px 1px grey;
     border-radius: 5px;
     `;
@@ -31,7 +32,7 @@ export const Button = styled.button`
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    width: 80%;
+    width: 200px;
     background: ${props => props.warning ? colorsTheme.warning : colorsTheme.base2};
     border-radius: 10px;
     cursor: pointer;

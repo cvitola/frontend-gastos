@@ -5,6 +5,10 @@ export const ImgHome = styled.img`
     padding: 10px;
     margin: 10px;
     border-radius: 15px;
+
+    @media screen and (max-width: 768px){
+        width: 250px;
+    }
     `;
 
 
