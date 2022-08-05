@@ -7,7 +7,6 @@ import { meses } from "../../assets/Constants/Constants";
 
 const ListSpend = ({spendByUser}) => {
     const [sum,setSum] = useState(0)
-    console.log(spendByUser)
     const sumatoria = () =>{
         return spendByUser.reduce((acumulador, actual) => acumulador + parseInt(actual.amount), 0);
     }

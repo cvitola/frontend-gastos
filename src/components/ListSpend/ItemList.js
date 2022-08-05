@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import { FaTrashAlt } from "react-icons/fa";
 import { deleteSpend } from "../../API/SpendBackEnd";
+import MyContext from '../../Context';
 
 const ItemList = ({data}) => {
+  useEffect( () => {
+    
+  },[MyContext.spendsByUser])
   const handleOnClickDelete = async() => { 
     const idGasto = data._id;
     try{
       const response = await deleteSpend(idGasto);
+      console.log(response)
       if (!response.status === 200) {
         throw new Error("No se pudo procesar la respuesta");
-      }  
+      }  else{
+        const newArray = MyContext.spendsByUser.filter( item => item._id === data._id )
+        MyContext.spendsByUser = newArray;
+      }
 
     } catch(error){
         console.log(error.response.data)
