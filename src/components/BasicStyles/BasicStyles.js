@@ -74,7 +74,7 @@ export const Container = styled.ul`
 
 export const ContainerFirst = styled.div`
     width: 100%;
-    padding-top:35px;
+    margin-top: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -84,7 +84,7 @@ export const Info = styled.p`
 
 export const Container = styled.div`
     width: 100%;
-    padding-top:35px;
+    margin-top: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

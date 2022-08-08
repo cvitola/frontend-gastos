@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const FooterPage = styled.footer`
     display: flex;
     align-items: center;
+    margin-top: auto;
     `;
 
 export const Container = styled.div`

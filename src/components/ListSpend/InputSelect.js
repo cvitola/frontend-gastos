@@ -1,12 +1,16 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import styled from 'styled-components';
-const InputSelect = ({props}) => {
-
+const InputSelect = ({props,month,handleOnSelect}) => {
+  
+  /*const [month,setMonth] = useState("")
+  const handleOnSelect = (e) => {
+    setMonth(e.target.value);
+    console.log(month)}*/
   return (
     
-    <Selector>
+    <Selector onChange={handleOnSelect}>
         {
-            props?.map( (item ) => <option value={item}>{item}</option>)
+            props?.map( (month ) => <option value={month} name={month} >{month}</option>)
         }
         
     </Selector>

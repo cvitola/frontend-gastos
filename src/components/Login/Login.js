@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import {loginUser} from "../../API/SpendBackEnd";
 import MyContext from '../../Context';
 import jwt_decode from "jwt-decode";
+import { FcBullish } from "react-icons/fc";
+
 const Login = () => {
 
   const valueData = useContext(MyContext);
@@ -29,8 +31,7 @@ const Login = () => {
           password: password
         }
         const response = await loginUser(login);
-        
-        console.log(response)
+
         if(response.status === 200) { 
           setMessage("Logueado!")
            valueData.accessToken =  response.data.token;
@@ -38,7 +39,6 @@ const Login = () => {
            valueData.firstName = decode.firstName;
            valueData.email = decode.email;
            valueData.id = decode.id;
-           console.log(valueData)
            navigate('../carga')
         } 
         return response
@@ -55,8 +55,11 @@ const Login = () => {
   
   return (
     <Container>
-      <h1>Inciar sesión</h1>
-      <p>poner iconito</p>
+      <Head>
+        <h1>Inciar sesión</h1>
+        <FcBullish />     
+      </Head>
+
       <BoxLogin>
         <Input type="mail" placeholder="cosmefulanito@mail.com" value={email} onChange={handleOnChangeMail} />
         <Input type="password" placeholder="password" value={password} onChange={handleOnChangePassword} />
@@ -87,7 +90,7 @@ export const GoTo = styled.a`
     `
 export const Container = styled.div`
     width: 100%;
-    padding-top:35px;
+    margin-top: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,4 +99,11 @@ export const Container = styled.div`
     `;
 
 export const Info = styled.p`
-  color: red`;
+  color: red;`;
+
+export const Head = styled.div`
+
+    & svg{
+      font-size: 100px;
+    }
+    `;
