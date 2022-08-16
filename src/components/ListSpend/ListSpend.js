@@ -83,7 +83,7 @@ export const Tool = styled.div`
     font-size: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: CEnter;
+    align-items: center;
     background: #FAFAFA;
     gap: 10px;
     @media screen and (max-width: 563px){

@@ -13,21 +13,27 @@ const Report = () => {
     }
 
     const imprimirReporte = (list) => {
-        //const mesSeleccionado = meses.indexOf(month)
         let resul = []
         meses.forEach( (data,index) => {
             const fil = list?.filter( (item => parseInt(item.date.split("-")[1]) === index))
-
+            
             if(fil.length !== 0){
                 resul.push(
                     {
                         mes: data,
                         sdo: sumatoria(fil)
                     })
-            }
+            } 
+        })
+        resul?.push({
+            mes: "Total",
+            sdo: sumatoria(list)
         })
         return resul.map( (pos) => 
-            <p key={pos.mes}>{pos.mes + " + " + pos.sdo}</p>
+            <Registro key={pos.mes}>
+                <Item>{pos.mes}</Item>
+                <Item>$ {pos.sdo}</Item>
+            </Registro>
         )
        
         
@@ -51,4 +57,17 @@ export const Container = styled.div`
     justify-content: center;
     align-items:center;
     background-color: ${colorsTheme.base1};
+    `;
+
+export const Registro = styled.div`
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    width: 50%;
+    border-bottom: 1px solid grey;
+    margin: 0.5rem;
+    `;
+export const Item = styled.div`
+    font-size: 1rem;
+    padding: 0 0.5rem 0.5rem 0;
     `;
