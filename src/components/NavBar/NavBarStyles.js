@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const User = styled.p`
-    padding: 1rem;
+    padding: 2rem;
     font-size: 1rem;
     font-weight: 300;
     `;

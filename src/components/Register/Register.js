@@ -66,7 +66,7 @@ export default Register;
 
 export const NameAndSurName = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     `
 export const Container = styled.div`

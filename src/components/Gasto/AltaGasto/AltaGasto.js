@@ -19,7 +19,7 @@ const AltaGasto = () => {
     useEffect( () => {
       onGetSpendsByUser()
 
-   }, [valueContext.spendsByUser]);
+   }, [message]);
 
     const handleOnChangeDate = (e) => {setDate(e.target.value)}
     const handleOnChangeCategory = (e) => {setCategory(e.target.value)}
@@ -31,14 +31,13 @@ const AltaGasto = () => {
       try{
         const response = await createNewSpend(date,category,amount, userID);
         console.log(response)
-        if (!response.status === 200) {
+        if (response.status !== 200) {
           throw new Error("No se pudo procesar la respuesta");
-        }  else{
-          
+        }  
+        else{
           setMessage(`Cargado ID: ${response.data.insertedId}`)    
           handleClearFields();
-          
-          
+
         }
 
       } catch(error){

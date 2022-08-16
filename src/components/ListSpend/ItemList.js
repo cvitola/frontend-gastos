@@ -1,27 +1,42 @@
-import React, { useEffect } from 'react'
+import React ,{ useContext, useState, useEffect}from 'react'
 import styled from 'styled-components';
 import { FaTrashAlt } from "react-icons/fa";
 import { deleteSpend } from "../../API/SpendBackEnd";
 import MyContext from '../../Context';
+import  { getSpendsByUser }  from "../../API/SpendBackEnd";
+
+
 
 const ItemList = ({data}) => {
+
+  const valueData = useContext(MyContext);
+
   useEffect( () => {
-    
-  },[MyContext.spendsByUser])
-  const handleOnClickDelete = async() => { 
+      console.log("Cambio el array ... ")
+  },[valueData.spendsByUser])
+
+  const onGetSpendsByUser = async() => {
+    const response = await getSpendsByUser( valueData.id );
+    valueData.spendsByUser = response.data
+  }
+
+  const handleOnClickDelete = async () => { 
     const idGasto = data._id;
+
+    console.log(valueData.spendsByUser)
     try{
       const response = await deleteSpend(idGasto);
-      console.log(response)
-      if (!response.status === 200) {
-        throw new Error("No se pudo procesar la respuesta");
+      if (response.status === 200) {
+        /*const newArray = valueData.spendsByUser.filter( item => item._id === data._id )
+        valueData.spendsByUser = newArray;
+        console.log(valueData.spendsByUser)*/
+        onGetSpendsByUser()
       }  else{
-        const newArray = MyContext.spendsByUser.filter( item => item._id === data._id )
-        MyContext.spendsByUser = newArray;
+        alert("No se pudo borrar")
       }
 
     } catch(error){
-        console.log(error.response.data)
+        console.log(error.response.data.message)
     }
   }
   return (

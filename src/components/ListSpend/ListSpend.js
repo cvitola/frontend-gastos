@@ -10,11 +10,12 @@ const ListSpend = ({spendByUser}) => {
     const [month, setMonth] = useState("");
     const [filtro, setFiltro] = useState(false);
     const [gastosFiltrados, setGastosFiltrados] = useState([]);
-    const sumatoria = () =>{
+    const sumatoria = (spendByUser) =>{
         return spendByUser?.reduce((acumulador, actual) => acumulador + parseInt(actual.amount), 0);
     }
+
     useEffect( () => {
-        setSum(sumatoria());
+        setSum(sumatoria(spendByUser));
     },[])
 
     const listarGastos = (spendByUser) => {
@@ -24,27 +25,32 @@ const ListSpend = ({spendByUser}) => {
         setMonth(e.target.value)
         
     }
-    const handleHolis = () => { 
+    const handleOnClickFilter = () => { 
         const mesSeleccionado = meses.indexOf(month)
         const fil = spendByUser?.filter( (item => parseInt(item.date.split("-")[1]) === mesSeleccionado))
-        setFiltro(true);
-        setGastosFiltrados(fil)
+        if(mesSeleccionado !== 0){
+            setFiltro(true);
+            setGastosFiltrados(fil)
+            setSum(sumatoria(fil))
+        } else {
+            setFiltro(false)
+            setSum(sumatoria(spendByUser))
+        }
+        
     }
   return (
     <Container>
         <H1>Lista de gastos</H1>
         <Tool>
             <div>
-                <ImFilter />
                 <InputSelect props={meses} month={month} handleOnSelect={handleOnSelect}/> 
-                <button onClick={handleHolis}>Hola</button>
+                <ButtonFilter onClick={handleOnClickFilter}><ImFilter /></ButtonFilter>
             </div>
 
             <Sum>GASTOS TOTAL: $ {sum}</Sum>
         </Tool>
         {
             !filtro ? listarGastos(spendByUser) : listarGastos(gastosFiltrados)
-           
         }
          
     </Container>
@@ -89,3 +95,11 @@ export const Tool = styled.div`
 
 export const Input = styled.input`
     `;
+
+export const ButtonFilter = styled.button`
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    border-style: none;
+    box-shadow: 2px 2px grey;
+    border-radius: 3px;`;

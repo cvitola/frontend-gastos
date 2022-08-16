@@ -23,6 +23,7 @@ export const Selector = styled.select`
     width: 150px;
     padding: 10px;
     margin: 10px;
-    border-style: 2px grey;
+    border-style: none;
+    box-shadow: 2px 2px grey;
     border-radius: 3px;
     `

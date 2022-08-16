@@ -5,5 +5,5 @@ export const colorsTheme = {
 }
 
 export const meses = [
-    "Seleccion","Enero","Febrero","Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    "Seleccione","Enero","Febrero","Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
 ];

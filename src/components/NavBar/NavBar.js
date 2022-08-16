@@ -24,6 +24,11 @@ const NavBar = () => {
     navigate('/carga')
   }
 
+  const handleOnClickReporte = () => {
+    setShowMobileMenu(!setShowMobileMenu)
+    navigate('/reporte')
+  }
+
   const handleOnClickLogOut = () => {
     setShowMobileMenu(!showMobileMenu)
     value.accessToken=""
@@ -55,6 +60,12 @@ const NavBar = () => {
             value.accessToken &&
             <MenuItem onClick={handleOnClickAltaGasto}>
               <MenuItemLink>CARGA</MenuItemLink>
+            </MenuItem>          
+          }
+          {
+            value.accessToken &&
+            <MenuItem onClick={handleOnClickReporte}>
+              <MenuItemLink>REPORTE</MenuItemLink>
             </MenuItem>          
           }
           {
