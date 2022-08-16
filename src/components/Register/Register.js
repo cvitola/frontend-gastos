@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import styled from 'styled-components';
 import { Button, ContainerFirst, H1, Input } from '../BasicStyles/BasicStyles';
 import { colorsTheme } from '../../assets/Constants/Constants';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { createNewUser } from '../../API/SpendBackEnd';
 
 const Register = () => {
@@ -11,6 +11,7 @@ const Register = () => {
     const [email, setMail]  = useState("");
     const [password, setPassword]  = useState("");
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     const handleOnChangeName = (e) => {setName(e.target.value)}
     const handleOnChangeSurName = (e) => {setSurName(e.target.value)}
@@ -18,7 +19,7 @@ const Register = () => {
     const handleOnChangePassword = (e) => {setPassword(e.target.value)}
 
     const validaContenido = (dato) => {
-        return dato != ""
+        return dato !== ""
     }
     const handleOnClickRegister = async() => {
         try{
@@ -33,6 +34,8 @@ const Register = () => {
                 const response = await createNewUser(register);
                 if(!response.status === "200"){
                     throw new Error("No se pudo procesar la respuesta");
+                } else{
+                    navigate('../login');
                 }
                 return response;
             }else{
